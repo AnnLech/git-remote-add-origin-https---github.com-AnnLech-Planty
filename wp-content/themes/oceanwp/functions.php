@@ -1151,6 +1151,19 @@ if ( ! function_exists( 'owp_fs' ) ) {
 		do_action( 'owp_fs_loaded' );
 	}
 }
+function add_admin_link( $items, $args ) {
+    echo '<script>console.log("Your stuff here")</script>';
+    if (is_super_admin() && $args->menu == 33) {
+
+        $items .= '<li><a href="'. get_admin_url() .'">admin</a></li>';
+
+    }
+
+    return $items;
+
+}
+add_filter( 'wp_nav_menu_items','add_admin_link', 10, 2 );
+
 
 // endregion
 
